@@ -1,27 +1,37 @@
 <div class="top">
   <div class="container">
+
     <div class="header">
       <h1>Todo</h1>
-      <div class="light-dark"></div>
+      <div class="light-dark">
+        <img src="/assets/images/icon-moon.svg" class="img-fluid rounded-top" alt="">
+      </div>
+    </div>
+
+    <div class="input-div">
+      <div class="circle"></div>
+      <input [(ngModel)]="actual.text" (keyup.enter)="add()" type="text" placeholder="Create a new todo..">
     </div>
 
     <div class="todos">
 
-      <input type="text">
-
-      <div class="list">
-        
-        todo-item
-        <div class="list-end">
-          <!-- Add dynamic number --> items left
-          Clear Completed
-        </div>
-        <div class="tabs">
-          All
-          Active
-          Completed
+      <div *ngFor="let t of todos" class="todo">
+        <div class="circle"></div>
+        <p>{{t.text}}</p>
+        <div class="delete">
+          <img src="/assets/images/icon-cross.svg" alt="">
         </div>
       </div>
+      <div class="list-end">
+        <!-- Add dynamic number --> items left
+        Clear Completed
+      </div>
+      <div class="tabs">
+        All
+        Active
+        Completed
+      </div>
+
     </div>
 
     <footer>

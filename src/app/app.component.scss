@@ -1,0 +1,86 @@
+@import '../styles/variables';
+@import '../styles/base';
+
+.header {
+    width: 100%;
+    color: #fff;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        text-transform: uppercase;
+        letter-spacing: .6em;
+        font-size: 2em;
+    }
+}
+
+.input-div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fff;
+    border-radius: .5rem;
+
+    .circle {
+        width: 1.7em;
+        height: 1.7em;
+        margin-left: 1rem;
+        border: 1px solid $Light-Grayish-Blue;
+        border-radius: 50%;
+        z-index: 2;
+    }
+
+    input {
+        width: 80%;
+        height: 4rem;
+        padding: 1rem;
+        overflow: hidden;
+        border: none;
+        outline: none;
+        font-size: 1.1em;
+    }
+
+    ::placeholder {
+        color: $Light-Grayish-Blue;
+    }
+}
+
+.todos {
+    width: 100%;
+    margin-top: 1.8em;
+    border-radius: .5rem;
+    background: #fff;
+
+    .todo {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 1.5rem;
+        padding-inline: 1rem;
+        border-bottom: 1px solid $Light-Grayish-Blue;
+        
+        .circle {
+            width: 1.7em;
+            height: 1.7em;
+            border: 1px solid $Light-Grayish-Blue;
+            border-radius: 50%;
+            z-index: 2;
+            color: $Light-Grayish-Blue;
+        }
+        
+        p {
+            width: 80%;
+            color: $Dark-Grayish-Blue;
+            font-size: 1.2em;
+        }
+        
+        img {
+            color: $Light-Grayish-Blue;
+        }
+    }
+}
