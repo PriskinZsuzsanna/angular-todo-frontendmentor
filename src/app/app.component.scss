@@ -56,6 +56,7 @@
 
     .todo {
         width: 100%;
+        height: 4rem;
         overflow: hidden;
         display: flex;
         justify-content: space-between;
@@ -73,14 +74,66 @@
             color: $Light-Grayish-Blue;
         }
         
+        /*.circle.completed {
+            background: $Check-Background;
+            border: $Check-Background;
+        }*/
+        
         p {
             width: 80%;
-            color: $Dark-Grayish-Blue;
+            color: $Very-Dark-Grayish-Blue;
             font-size: 1.2em;
+            font-weight: bold;
         }
         
         img {
             color: $Light-Grayish-Blue;
         }
     }
+
+    .list-end {
+        width: 100%;
+        height: 4rem;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 1.5rem;
+        padding-inline: 1rem;
+        color: $Dark-Grayish-Blue;
+
+        .clear {
+            cursor: pointer;
+        }
+    }
+}
+
+.tabs {
+    margin-top: 2rem;
+    width: 100%;
+    height: 4rem;
+    background: #fff;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    
+    p{
+        font-weight: bold;
+        color: $Dark-Grayish-Blue;
+        cursor: pointer;
+    }
+
+    .filtered {
+        color: $Bright-Blue;
+    }
+}
+
+.footer-text {
+    margin-top: 3rem;
+    text-align: center;
+    color: $Dark-Grayish-Blue;
+    font-weight: 1.2em;
+    font-weight: bold;
 }

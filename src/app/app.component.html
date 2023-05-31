@@ -16,22 +16,25 @@
     <div class="todos">
 
       <div *ngFor="let t of todos" class="todo">
-        <div class="circle"></div>
+        <div [ngClass]="{completed: t.completed}" (click)="toggleComplete(t)" class="circle"></div>
         <p>{{t.text}}</p>
         <div class="delete">
           <img src="/assets/images/icon-cross.svg" alt="">
         </div>
       </div>
+
       <div class="list-end">
-        <!-- Add dynamic number --> items left
-        Clear Completed
-      </div>
-      <div class="tabs">
-        All
-        Active
-        Completed
+        <p> {{left}} items left</p>
+        <p class="clear"> Clear Completed</p>
       </div>
 
+      
+    </div>
+
+    <div class="tabs">
+      <p (click)="getFilter('all')"  value="all" [ngClass]="{filtered: isFilterAll}">All</p>
+      <p (click)="getFilter('active')"  value="active" [ngClass]="{filtered: isFilterActive}">Active</p>
+      <p (click)="getFilter('completed')"  value="completed" [ngClass]="{filtered: isFilterCompleted}">Completed</p>
     </div>
 
     <footer>
