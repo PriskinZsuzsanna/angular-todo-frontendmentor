@@ -16,16 +16,16 @@
     <div class="todos">
 
       <div *ngFor="let t of todos" class="todo">
-        <div [ngClass]="{completed: t.completed}" (click)="toggleComplete(t)" class="circle"></div>
-        <p>{{t.text}}</p>
+        <div [ngClass]="{completed: t.completed}" (click)="toggleCompleted(t)" class="circle"></div>
+        <p [ngClass]="{completed: t.completed}">{{t.text}}</p>
         <div class="delete">
-          <img src="/assets/images/icon-cross.svg" alt="">
+          <img (click)="delete(t)" src="/assets/images/icon-cross.svg" alt="">
         </div>
       </div>
 
       <div class="list-end">
         <p> {{left}} items left</p>
-        <p class="clear"> Clear Completed</p>
+        <p (click)="clearCompleted()" class="clear"> Clear Completed</p>
       </div>
 
       

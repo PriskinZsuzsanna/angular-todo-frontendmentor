@@ -10,54 +10,56 @@ export class AppComponent {
   title = 'angular-todo-frontendmentor';
   localTodos: Array<Todo> = new Array<Todo>
   todos: Array<Todo> = new Array<Todo>
-  actual:Todo = new Todo ()
-  active:  Array<Todo> = new Array<Todo>
-  completed:  Array<Todo> = new Array<Todo>
+  actual: Todo = new Todo()
+  active: Array<Todo> = new Array<Todo>
+  completed: Array<Todo> = new Array<Todo>
   left: number = 0;
-  isFilterAll:boolean = true
-  isFilterActive:boolean = false
-  isFilterCompleted:boolean = false
+  isFilterAll: boolean = true
+  isFilterActive: boolean = false
+  isFilterCompleted: boolean = false
 
-  constructor(){
+  constructor() {
     this.load()
     this.sortCompleted()
   }
 
-  add(){
+  add() {
     console.log(this.actual)
-    this.todos.push(this.actual)
-    this.actual= new Todo ()
+    //this.todos.push(this.actual)
+    this.localTodos.push(this.actual)
+    this.actual = new Todo()
+    this.sortCompleted()
     this.save()
   }
 
-  load(){
+  load() {
     this.localTodos = JSON.parse(localStorage.getItem("todos") ?? '[]')
     this.todos = this.localTodos
   }
 
-  save(){
-    localStorage.setItem("todos", JSON.stringify(this.todos))
+  save() {
+    localStorage.setItem("todos", JSON.stringify(this.localTodos))
   }
 
-  sortCompleted(){
+  sortCompleted() {
     this.active = this.todos.filter(todo => {
       return todo.completed == false
     })
-    this.completed= this.todos.filter(todo => {
+    this.completed = this.todos.filter(todo => {
       return todo.completed == true
     })
     this.left = this.active.length
   }
 
-  getFilter(filter:string){
+  getFilter(filter: string) {
     this.isFilterActive = false;
     this.isFilterAll = false;
     this.isFilterCompleted = false;
 
-    if(filter == "completed"){
+    if (filter == "completed") {
       this.todos = this.completed
       this.isFilterCompleted = true
-    } else if (filter == "active"){
+    } else if (filter == "active") {
       this.todos = this.active
       this.isFilterActive = true
     } else {
@@ -66,10 +68,42 @@ export class AppComponent {
     }
   }
 
-  toggleComplete(todo:Todo){
+  toggleCompleted(todo: Todo) {
     console.log(todo.completed)
     todo.completed = !todo.completed
+    this.save()
+    this.load()
+    this.sortCompleted()
+    this.isFilterActive = false
+    this.isFilterCompleted = false
+    this.isFilterAll = true
+  }
 
+  clearCompleted() {
+    this.todos.map(todo => {
+      todo.completed = false
+      this.save()
+      this.sortCompleted()
+      this.getFilter("all")
+      this.isFilterActive = false
+      this.isFilterCompleted = false
+      this.isFilterAll = true
+    })
+  }
+
+  delete(t: Todo) {
+    this.todos = this.todos.filter(todo => {
+      return todo.id != t.id
+    })
+    this.localTodos = this.localTodos.filter(todo => {
+      return todo.id != t.id
+    })
+    this.save()
+    this.getFilter("all")
+    this.isFilterActive = false
+    this.isFilterCompleted = false
+    this.isFilterAll = true
+    this.sortCompleted()
   }
 
 }

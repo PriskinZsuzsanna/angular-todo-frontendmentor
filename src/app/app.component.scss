@@ -72,18 +72,46 @@
             border-radius: 50%;
             z-index: 2;
             color: $Light-Grayish-Blue;
+            position: relative;
+            &.completed {
+                background: $Check-Background;
+                border: $Check-Background;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 2px;
+                height: 4px;
+                background: #fff;
+                transform-origin: bottom;
+                top:45%;
+                left: 33%;
+                rotate: -45deg;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                width: 2px;
+                height: 11px;
+                background: #fff;
+                transform-origin: bottom;
+                top:13%;
+                left: 34%;
+                rotate: 48deg;
+            }
         }
-        
-        /*.circle.completed {
-            background: $Check-Background;
-            border: $Check-Background;
-        }*/
         
         p {
             width: 80%;
             color: $Very-Dark-Grayish-Blue;
             font-size: 1.2em;
             font-weight: bold;
+
+            &.completed {
+            text-decoration: line-through;
+            color: $Light-Grayish-Blue;
+            }
         }
         
         img {
