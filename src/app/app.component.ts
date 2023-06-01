@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Todo } from './todo';
+import { Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+ 
 })
 export class AppComponent {
   title = 'angular-todo-frontendmentor';
@@ -17,11 +21,15 @@ export class AppComponent {
   isFilterAll: boolean = true
   isFilterActive: boolean = false
   isFilterCompleted: boolean = false
+  light: boolean = true
+  dark: boolean = false
 
-  constructor() {
+  constructor(@Inject(DOCUMENT) private document: Document) {
     this.load()
     this.sortCompleted()
+    
   }
+
 
   add() {
     console.log(this.actual)
@@ -104,6 +112,12 @@ export class AppComponent {
     this.isFilterCompleted = false
     this.isFilterAll = true
     this.sortCompleted()
+  }
+
+  changeMode(){
+    this.document.body.classList.toggle("dark");
+    this.light = !this.light
+    this.dark = !this.dark
   }
 
 }

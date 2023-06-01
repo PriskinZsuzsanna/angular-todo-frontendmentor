@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -10,7 +10,13 @@
 body {
     width: 100%;
     min-height: 100vh;
-    background: $Very-Light-Grayish-Blue;
+    background: var(--bg-color);
+    transition: all .3s ease-in-out;
+    font-size: .8rem;
+
+    @media screen and (min-width: 700px) {
+        font-size: 1rem;
+    }
 
     .top {
         width: 100%;
@@ -19,6 +25,15 @@ body {
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        transition: all .3s ease-in-out;
+
+        @media screen and (min-width: 700px) {
+            background: url('/assets/images/bg-desktop-light.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+        }
 
         .container {
             width: 100%;
@@ -26,6 +41,19 @@ body {
             min-height: 100vh;
             margin-inline: auto;
             padding: 3rem 5%;
+        }
+    }
+
+
+}
+
+body.dark {
+    .top {
+        background: url('/assets/images/bg-mobile-dark.jpg') no-repeat center/cover;
+
+        @media screen and (min-width: 700px) {
+            background: url('/assets/images/bg-desktop-dark.jpg') no-repeat center/cover;
+
         }
     }
 }
