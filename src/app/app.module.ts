@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {DragDropModule} from '@angular/cdk/drag-drop'
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { DragDropModule} from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -11,8 +10,9 @@ import { DragDropModule} from '@angular/cdk/drag-drop'
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule, 
     DragDropModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

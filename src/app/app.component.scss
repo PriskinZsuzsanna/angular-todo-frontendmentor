@@ -4,10 +4,14 @@
 .header {
     width: 100%;
     color: #fff;
-    height: 8vh;
+    height: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media screen and (min-width: 700px){
+        height: 8vh;
+    }
 
     h1 {
         text-transform: uppercase;
@@ -45,16 +49,18 @@
         background: var(--todo-bg);
         color: var(--dark-text);
         transition: all .3s ease-in-out;
+        caret-color: var(--caret)
     }
 
     ::placeholder {
         color: var(--very-light-text);
     }
+
 }
 
 .todos {
     width: 100%;
-    margin-top: 1.8em;
+    margin-top: 1.2em;
     border-radius: .5rem;
     background: var(--todo-bg);
     transition: all .3s ease-in-out;
@@ -69,6 +75,10 @@
         padding-block: 1.5rem;
         padding-inline: 1rem;
         border-bottom: 1px solid var(--very-light-text);
+
+        &:hover {
+            cursor: pointer;
+        }
         
         .circle {
             width: 1.7em;
@@ -79,6 +89,15 @@
             color: var(--very-light-text);
             position: relative;
             transition: all .3s ease-in-out;
+
+            &:hover {
+                border-right: 1px solid #57ddff;
+                border-left: 1px solid #57ddff;
+                border-top: 1px solid #c058f3;
+                border-bottom: 1px solid #c058f3;
+                cursor: pointer;
+            }
+
             &.completed {
                 background: $Check-Background;
                 border: $Check-Background;
@@ -104,6 +123,7 @@
                     left: 34%;
                     rotate: 48deg;
                 }
+
             }
 
         }
@@ -117,8 +137,15 @@
             &.completed {
             text-decoration: line-through;
             color: var(--very-light-text);
+            font-weight: 400;
+            }
+
+            &:hover {
+                cursor: pointer;
             }
         }
+
+
         
         img {
             fill: var(--very-light-text);
@@ -141,12 +168,16 @@
 
         .clear {
             cursor: pointer;
+
+            &:hover {
+                color: var(--dark-text)
+            }
         }
     }
 }
 
 .tabs {
-    margin-top: 2rem;
+    margin-top: 1.2em;
     width: 100%;
     height: 4em;
     background: var(--todo-bg);
@@ -161,6 +192,10 @@
         font-weight: bold;
         color: var(--light-text);
         cursor: pointer;
+
+        &:hover {
+            color: var(--dark-text)
+        }
     }
 
     .filtered {

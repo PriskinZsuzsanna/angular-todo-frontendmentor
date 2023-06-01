@@ -24,6 +24,7 @@ $Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
     --very-light-text: #{$Dark-Grayish-Blue};
     --light-text: #{$Dark-Grayish-Blue};
     --dark-text: #{$Light-Grayish-Blue};
+    --caret: #{$Bright-Blue};
 };
 
 @mixin light(){
@@ -32,14 +33,19 @@ $Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
     --very-light-text: #{$Light-Grayish-Blue};
     --light-text: #{$Dark-Grayish-Blue};
     --dark-text: #{$Very-Dark-Grayish-Blue};
+    --caret: #{$Bright-Blue};
 };
 
 
 body{
-    @include light()
+    @include light();
+
 }
 
 body.dark {
-    @include dark()
+    @include dark();
+
 }
+
+
 

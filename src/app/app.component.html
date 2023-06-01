@@ -14,10 +14,10 @@
       <input [(ngModel)]="actual.text" (keyup.enter)="add()" type="text" placeholder="Create a new todo..">
     </div>
 
-    
-      <div class="todos" >
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+      <div  class="todos" >
   
-        <div *ngFor="let t of todos" class="todo">
+        <div *ngFor="let t of todos" cdkDrag class="todo">
           <div [ngClass]="{completed: t.completed}" (click)="toggleCompleted(t)" class="circle"></div>
           <p [ngClass]="{completed: t.completed}">{{t.text}}</p>
           <div class="delete">
@@ -32,6 +32,7 @@
   
         
       </div>
+    </div>
    
 
     <div class="tabs">

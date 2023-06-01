@@ -1,14 +1,15 @@
-import { Component} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Todo } from './todo';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
- 
+
 })
 export class AppComponent {
   title = 'angular-todo-frontendmentor';
@@ -27,7 +28,7 @@ export class AppComponent {
   constructor(@Inject(DOCUMENT) private document: Document) {
     this.load()
     this.sortCompleted()
-    
+    this.detectMode()
   }
 
 
@@ -114,10 +115,24 @@ export class AppComponent {
     this.sortCompleted()
   }
 
-  changeMode(){
+  changeMode() {
     this.document.body.classList.toggle("dark");
     this.light = !this.light
     this.dark = !this.dark
+  }
+
+  detectMode() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      this.document.body.classList.add("dark");
+      this.light = false
+      this.dark = true
+    }
+  }
+
+
+  drop(event: CdkDragDrop<Todo[]>) {
+    moveItemInArray(this.todos, event.previousIndex, event.currentIndex)
+    this.save()
   }
 
 }
