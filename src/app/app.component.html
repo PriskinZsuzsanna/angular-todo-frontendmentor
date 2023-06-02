@@ -4,8 +4,8 @@
     <div class="header">
       <h1>Todo</h1>
       <div class="light-dark">
-        <img *ngIf="light" (click)="changeMode()" src="/assets/images/icon-moon.svg" class="img-fluid rounded-top" alt="">
-        <img *ngIf="dark" (click)="changeMode()" src="/assets/images/icon-sun.svg" class="img-fluid rounded-top" alt="">
+        <img *ngIf="light" (click)="changeMode()" src="assets/images/icon-moon.svg" class="img-fluid rounded-top" alt="">
+        <img *ngIf="dark" (click)="changeMode()" src="assets/images/icon-sun.svg" class="img-fluid rounded-top" alt="">
       </div>
     </div>
   
@@ -21,7 +21,7 @@
           <div [ngClass]="{completed: t.completed}" (click)="toggleCompleted(t)" class="circle"></div>
           <p [ngClass]="{completed: t.completed}" (click)="toggleCompleted(t)">{{t.text}}</p>
           <div class="delete">
-            <img (click)="delete(t)" src="/assets/images/icon-cross.svg" alt="">
+            <img (click)="delete(t)" src="assets/images/icon-cross.svg" alt="">
           </div>
         </div>
   

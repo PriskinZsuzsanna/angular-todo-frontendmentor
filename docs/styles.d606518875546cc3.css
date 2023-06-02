@@ -1,0 +1,337 @@
+@import"https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap";
+
+body {
+    --bg-color: hsl(236, 33%, 92%);
+    --todo-bg: #fff;
+    --very-light-text: hsl(234, 39%, 85%);
+    --light-text: hsl(234, 11%, 52%);
+    --dark-text: hsl(237, 14%, 26%);
+    --caret: hsl(220, 98%, 61%)
+}
+
+body.dark {
+    --bg-color: hsl(235, 21%, 11%);
+    --todo-bg: hsl(235, 24%, 19%);
+    --very-light-text: hsl(234, 11%, 52%);
+    --light-text: hsl(234, 11%, 52%);
+    --dark-text: hsl(234, 39%, 85%);
+    --caret: hsl(220, 98%, 61%)
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Josefin Sans, sans-serif
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--bg-color);
+    transition: all .3s ease-in-out;
+    font-size: .8rem
+}
+
+@media screen and (min-width: 700px) {
+    body {
+        font-size: 1rem
+    }
+}
+
+body .top {
+    width: 100%;
+    height: 30vh;
+    background: url('assets/images/bg-mobile-light.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: all .3s ease-in-out;
+    position: relative
+}
+
+@media screen and (min-width: 700px) {
+    body .top {
+        background: url('assets/images/bg-desktop-light.jpg') no-repeat center/cover
+    }
+}
+
+body .top .container {
+    position: absolute;
+    inset: 0;
+    top: 8vh;
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+    padding: 0 5%
+}
+
+body.dark .top {
+    background: url('assets/images/bg-mobile-dark.jpg') no-repeat center/cover
+}
+
+@media screen and (min-width: 700px) {
+    body.dark .top {
+        background: url('assets/images/bg-desktop-dark.jpg') no-repeat center/cover
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .mobile {
+        display: none
+    }
+}
+
+.header {
+    width: 100%;
+    color: #fff;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+@media screen and (min-width: 700px) {
+    .header {
+        height: 8vh
+    }
+}
+
+.header h1 {
+    text-transform: uppercase;
+    letter-spacing: .6em;
+    font-size: 2em
+}
+
+.header .light-dark {
+    cursor: pointer
+}
+
+.header .light-dark:hover img {
+    scale: 1.1
+}
+
+.header .light-dark img {
+    transition: all .3s ease-in-out
+}
+
+.input-div {
+    width: 100%;
+    height: 4em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: var(--todo-bg);
+    border-radius: .5rem;
+    transition: all .3s ease-in-out
+}
+
+.input-div .circle {
+    width: 1.7em;
+    height: 1.7em;
+    margin-left: 1rem;
+    border: 1px solid var(--very-light-text);
+    border-radius: 50%;
+    z-index: 2
+}
+
+.input-div input {
+    width: 80%;
+    padding: 1rem;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    font-size: 1.1em;
+    background: var(--todo-bg);
+    color: var(--dark-text);
+    transition: all .3s ease-in-out;
+    caret-color: var(--caret)
+}
+
+.input-div ::placeholder {
+    color: var(--very-light-text)
+}
+
+.todos {
+    width: 100%;
+    margin-top: 1.2em;
+    border-radius: .5rem;
+    background: var(--todo-bg);
+    transition: all .3s ease-in-out
+}
+
+.todos .todo {
+    width: 100%;
+    height: 4em;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.5rem;
+    padding-inline: 1rem;
+    border-bottom: 1px solid var(--very-light-text)
+}
+
+.todos .todo:hover .circle {
+    cursor: pointer;
+    background: linear-gradient(#57ddff, #c058f3);
+    scale: 1.1;
+    transition: all .3s ease-in-out
+}
+
+.todos .todo:hover .circle:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--todo-bg);
+    border-radius: 50%;
+    scale: .9
+}
+
+.todos .todo .circle {
+    width: 1.7em;
+    height: 1.7em;
+    border: 1px solid var(--very-light-text);
+    border-radius: 50%;
+    z-index: 2;
+    color: var(--very-light-text);
+    position: relative;
+    transition: all .3s ease-in-out
+}
+
+.todos .todo .circle.completed {
+    background: linear-gradient(#57ddff, #c058f3);
+    border: linear-gradient(#57ddff, #c058f3)
+}
+
+.todos .todo .circle.completed:after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 4px;
+    background: #fff;
+    transform-origin: bottom;
+    top: 45%;
+    left: 33%;
+    rotate: -45deg
+}
+
+.todos .todo .circle.completed:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 11px;
+    background: #fff;
+    transform-origin: bottom;
+    top: 13%;
+    left: 34%;
+    rotate: 48deg
+}
+
+.todos .todo p {
+    width: 80%;
+    color: var(--dark-text);
+    font-size: 1.2em;
+    font-weight: 700
+}
+
+.todos .todo p.completed {
+    text-decoration: line-through;
+    color: var(--very-light-text);
+    font-weight: 400
+}
+
+.todos .todo p:hover {
+    cursor: pointer
+}
+
+.todos .todo img {
+    fill: var(--very-light-text);
+    cursor: pointer;
+    transition: all .3s ease-in-out
+}
+
+.todos .list-end {
+    width: 100%;
+    height: 4em;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.5rem;
+    padding-inline: 1rem;
+    color: var(--light-text);
+    transition: all .3s ease-in-out
+}
+
+.todos .list-end .left {
+    width: 20%
+}
+
+.todos .list-end .clear {
+    width: 20%;
+    cursor: pointer
+}
+
+.todos .list-end .clear:hover {
+    color: var(--dark-text)
+}
+
+.todos .list-end .tabs.desktop {
+    width: 60%
+}
+
+.tabs {
+    margin-top: 1.2em;
+    width: 100%;
+    height: 4em;
+    background: var(--todo-bg);
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: all .3s ease-in-out
+}
+
+.tabs p {
+    font-weight: 700;
+    color: var(--light-text);
+    cursor: pointer
+}
+
+.tabs p:hover {
+    color: var(--dark-text)
+}
+
+.tabs .filtered {
+    color: #3a7bfd
+}
+
+@media screen and (min-width: 900px) {
+    .tabs.mobile {
+        display: none
+    }
+}
+
+.tabs.desktop {
+    display: none
+}
+
+@media screen and (min-width: 900px) {
+    .tabs.desktop {
+        display: flex;
+        margin-top: 0
+    }
+}
+
+footer {
+    padding-block: 3rem
+}
+
+footer .footer-text {
+    text-align: center;
+    color: var(--light-text);
+    font-weight: 1.2em;
+    font-weight: 700
+}
