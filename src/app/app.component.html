@@ -1,6 +1,6 @@
 <div class="top">
   <div class="container">
-
+  
     <div class="header">
       <h1>Todo</h1>
       <div class="light-dark">
@@ -8,25 +8,30 @@
         <img *ngIf="dark" (click)="changeMode()" src="/assets/images/icon-sun.svg" class="img-fluid rounded-top" alt="">
       </div>
     </div>
-
+  
     <div class="input-div">
       <div class="circle"></div>
       <input [(ngModel)]="actual.text" (keyup.enter)="add()" type="text" placeholder="Create a new todo..">
     </div>
-
+  
     <div cdkDropList (cdkDropListDropped)="drop($event)">
       <div  class="todos" >
   
         <div *ngFor="let t of todos" cdkDrag class="todo">
           <div [ngClass]="{completed: t.completed}" (click)="toggleCompleted(t)" class="circle"></div>
-          <p [ngClass]="{completed: t.completed}">{{t.text}}</p>
+          <p [ngClass]="{completed: t.completed}" (click)="toggleCompleted(t)">{{t.text}}</p>
           <div class="delete">
             <img (click)="delete(t)" src="/assets/images/icon-cross.svg" alt="">
           </div>
         </div>
   
         <div class="list-end">
-          <p> {{left}} items left</p>
+          <p class="left"> {{left}} items left</p>
+          <div class="tabs desktop">
+            <p (click)="getFilter('all')"  value="all" [ngClass]="{filtered: isFilterAll}" class="desktop">All</p>
+            <p (click)="getFilter('active')"  value="active" [ngClass]="{filtered: isFilterActive}" class="desktop" >Active</p>
+            <p (click)="getFilter('completed')"  value="completed" [ngClass]="{filtered: isFilterCompleted}" class="desktop">Completed</p>
+          </div>
           <p (click)="clearCompleted()" class="clear"> Clear Completed</p>
         </div>
   
@@ -34,16 +39,16 @@
       </div>
     </div>
    
-
-    <div class="tabs">
-      <p (click)="getFilter('all')"  value="all" [ngClass]="{filtered: isFilterAll}">All</p>
-      <p (click)="getFilter('active')"  value="active" [ngClass]="{filtered: isFilterActive}">Active</p>
-      <p (click)="getFilter('completed')"  value="completed" [ngClass]="{filtered: isFilterCompleted}">Completed</p>
+  
+    <div class="tabs mobile">
+      <p (click)="getFilter('all')"  value="all" [ngClass]="{filtered: isFilterAll}" >All</p>
+      <p (click)="getFilter('active')"  value="active" [ngClass]="{filtered: isFilterActive}" >Active</p>
+      <p (click)="getFilter('completed')"  value="completed" [ngClass]="{filtered: isFilterCompleted}" >Completed</p>
     </div>
-
+  
     <footer>
       <div class="footer-text">Drag and drop to reorder list</div>
     </footer>
-
+  
   </div>
 </div>

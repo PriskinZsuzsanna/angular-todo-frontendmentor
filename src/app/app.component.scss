@@ -18,6 +18,18 @@
         letter-spacing: .6em;
         font-size: 2em;
     }
+
+    .light-dark {
+        cursor: pointer;
+
+        &:hover img{
+            scale: 1.1;
+        }
+
+        img {
+            transition: all .3s ease-in-out;
+        }
+    }
 }
 
 .input-div {
@@ -76,8 +88,20 @@
         padding-inline: 1rem;
         border-bottom: 1px solid var(--very-light-text);
 
-        &:hover {
+        &:hover .circle {
             cursor: pointer;
+            background: $Check-Background;
+            scale: 1.1;
+            transition: all .3s ease-in-out;
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: var(--todo-bg);
+                border-radius: 50%;
+                scale: .9;
+            }
         }
         
         .circle {
@@ -90,13 +114,6 @@
             position: relative;
             transition: all .3s ease-in-out;
 
-            &:hover {
-                border-right: 1px solid #57ddff;
-                border-left: 1px solid #57ddff;
-                border-top: 1px solid #c058f3;
-                border-bottom: 1px solid #c058f3;
-                cursor: pointer;
-            }
 
             &.completed {
                 background: $Check-Background;
@@ -166,12 +183,21 @@
         color: var(--light-text);
         transition: all .3s ease-in-out;
 
+        .left {
+            width: 20%;
+        }
+
         .clear {
+            width: 20%;
             cursor: pointer;
 
             &:hover {
                 color: var(--dark-text)
             }
+        }
+
+        .tabs.desktop {
+            width: 60%;
         }
     }
 }
@@ -203,10 +229,28 @@
     }
 }
 
-.footer-text {
-    margin-top: 3rem;
-    text-align: center;
-    color: var(--light-text);
-    font-weight: 1.2em;
-    font-weight: bold;
+.tabs.mobile {
+
+    @media screen and (min-width: 900px){
+        display: none;
+    }
+}
+.tabs.desktop {
+    display: none;
+
+    @media screen and (min-width: 900px){
+        display: flex;
+        margin-top: 0;
+    }
+}
+
+footer {
+    padding-block: 3rem;
+
+    .footer-text {
+        text-align: center;
+        color: var(--light-text);
+        font-weight: 1.2em;
+        font-weight: bold;
+    }
 }
