@@ -276,8 +276,7 @@ body.dark .top {
 
 @media screen and (min-width: 700px) {
     .todos .list-end .clear {
-        width: 20%;
-        cursor: pointer
+        width: 20%
     }
 }
 

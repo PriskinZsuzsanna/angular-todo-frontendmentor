@@ -154,8 +154,13 @@
         }
 
         .clear {
-            width: 20%;
+            width: 30%;
+            text-align: right;
             cursor: pointer;
+
+            @media screen and (min-width: 700px){
+                width: 20%;
+            }
 
             &:hover {
                 color: var(--dark-text)
