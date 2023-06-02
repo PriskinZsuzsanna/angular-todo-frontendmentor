@@ -150,11 +150,16 @@
         transition: all .3s ease-in-out;
 
         .left {
-            width: 20%;
+            width: 50%;
+            text-align: left;
+
+            @media screen and (min-width: 700px){
+                width: 20%;
+            }
         }
 
         .clear {
-            width: 30%;
+            width: 50%;
             text-align: right;
             cursor: pointer;
 
