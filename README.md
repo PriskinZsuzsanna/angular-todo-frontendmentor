@@ -17,3 +17,5 @@ Angular: Drag and Drop Light-Dark Todo List - Frontend Mentor Challange
 https://priskinzsuzsanna.github.io/angular-todo-frontendmentor/
 
 ### Screenshot
+![png5](https://github.com/PriskinZsuzsanna/angular-todo-frontendmentor/assets/121173949/c5d55b78-6207-4e0c-884f-e36e49205be8)
+
