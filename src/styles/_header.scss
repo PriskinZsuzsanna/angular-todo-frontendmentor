@@ -1,0 +1,32 @@
+
+
+.header {
+    width: 100%;
+    color: #fff;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and (min-width: 700px){
+        height: 8vh;
+    }
+
+    h1 {
+        text-transform: uppercase;
+        letter-spacing: .6em;
+        font-size: 2em;
+    }
+
+    .light-dark {
+        cursor: pointer;
+
+        &:hover img{
+            scale: 1.1;
+        }
+
+        img {
+            transition: all .3s ease-in-out;
+        }
+    }
+}
