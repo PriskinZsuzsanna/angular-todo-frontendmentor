@@ -269,8 +269,15 @@ body.dark .top {
 }
 
 .todos .list-end .clear {
-    width: 20%;
+    width: 30%;
     cursor: pointer
+}
+
+@media screen and (min-width: 700px) {
+    .todos .list-end .clear {
+        width: 20%;
+        cursor: pointer
+    }
 }
 
 .todos .list-end .clear:hover {
