@@ -270,6 +270,7 @@ body.dark .top {
 
 .todos .list-end .clear {
     width: 30%;
+    text-align: right;
     cursor: pointer
 }
 
